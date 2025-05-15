@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+</head>
+<style>
+    table {
+        border: 5px solid black;
+        justify-self: center;
+    }
+
+    th, td {
+        border: 2px solid black;
+        padding: 5px;
+    }
+    .newuser{
+        padding: 5px;
+        font-size: large;
+        background-color: #ff8fab;
+    }
+    .newuser:hover{
+        background-color: #ade8f4;
+    }
+
+    .feature{
+        padding: 3px;
+        font-family: cursive;
+        font-size: medium;
+        background-color: #ff8fab;
+    }
+    .feature:hover{
+        background-color: #ffc2d1;
+    }
+</style>
+
+<body>
+    <h2><a href="http://localhost:8080/user/new"><button class="newuser">join us today!</button></a></h2>
+    <table>
+        <tr>
+            <th>S.no</th>
+            <th>user id</th>
+            <th>username</th>
+            <th>email</th>
+        </tr>
+        <%let count=1%>
+            <%for(user of users){%>
+
+                <tr>
+                    <td>
+                        <%=count%>
+                            <%count=count+1%>
+                    </td>
+                    <td>
+                        <%= user.id%>
+                    </td>
+                    <td>
+                        <%= user.username%>
+                    </td>
+                    <td>
+                        <%= user.email%>
+                    </td>
+                    <td>
+                        <form method="GET" action="/user/<%=user.id%>/edit"><button class="feature">Edit username</button></form>
+                    </td>
+                    <td>
+                        <a href="http://localhost:8080/user/<%=user.id%>/remove"><button class="feature">Delete user</button></a>
+                    </td>
+                </tr>
+                <%}%>
+
+    </table>
+    
+</body>
+
+</html>
