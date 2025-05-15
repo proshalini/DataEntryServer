@@ -34,6 +34,9 @@ let getUser = () => {
 
 //connection ends when our app is rendered 
 //home page route
+app.listen(port, () => {
+  console.log("app is listening on port 8080");
+})
 app.get("/", (req, res) => {
   let q = `SELECT COUNT(*) FROM users`;
   try {
@@ -171,16 +174,4 @@ app.delete("/user/:id",(req,res)=>{
     res.send("error in database");
    }
 })
-app.listen(port, () => {
-  console.log("app is listening on port 8080");
-})
-// try{
-//     connection.query(q,[bulkData],(err,result)=>{
-//         if (err) throw err;
-//         console.log(result);
-//     });
-// }
-// catch(err){
-//     console.log(err)
-// }
-// connection.end();
+
